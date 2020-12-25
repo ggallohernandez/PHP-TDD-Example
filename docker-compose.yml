@@ -9,7 +9,23 @@ services:
     volumes:
       - .:/var/www/html
     ports:
-      - 8080:80
+      - 8081:80
     environment:
       - XDEBUG_REMOTE_HOST=192.168.1.72
       - FIXERIO_API_KEY=952c91a77025e55b92678303102b99af
+    networks:
+      - currency_converter_net
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger-ui
+    depends_on:
+      - app
+    ports:
+      - 8080:8080
+    environment:
+      - URL=http://localhost:8081/swagger.json
+    networks:
+      - currency_converter_net
+networks:
+  currency_converter_net:
+    driver: bridge

@@ -20,3 +20,7 @@ RUN install_composer.sh
 
 RUN composer install
 RUN composer dump-autoload
+
+RUN a2enmod rewrite
+
+
