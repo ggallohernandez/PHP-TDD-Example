@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  app:
+    build:
+      context: ./
+    image: currency-converter/app
+    container_name: app
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80
+    environment:
+      - XDEBUG_REMOTE_HOST=192.168.1.72
+      - FIXERIO_API_KEY=952c91a77025e55b92678303102b99af
